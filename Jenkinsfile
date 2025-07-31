@@ -4,12 +4,12 @@ pipeline {
   environment {
     // Variables para Terraform (si decides no usar .tfvars)
     TF_VAR_subscription_id = credentials('azuresubscription_id')
-    TF_VAR_client_id       = credentials('azureclient_id')
+    TF_VAR_client_id       = 'b24fa600-ff3d-414a-9802-79047c858bce'
     TF_VAR_client_secret   = credentials('azureclient_secret')
     TF_VAR_tenant_id       = '8ee9d595-4f94-41e5-a20c-b29b4e64578b'
 
     // Para Azure CLI (az login)
-    AZURE_CLIENT_ID        = credentials('azureclient_id')
+    AZURE_CLIENT_ID        = 'b24fa600-ff3d-414a-9802-79047c858bce'
     AZURE_CLIENT_SECRET    = credentials('azureclient_secret')
     AZURE_TENANT_ID        = '8ee9d595-4f94-41e5-a20c-b29b4e64578b'
     
