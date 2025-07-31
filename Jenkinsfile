@@ -20,6 +20,12 @@ pipeline {
   }
 
   stages {
+    stage('Debug Jenkins Secret') {
+      steps {
+        echo "AZURE_CLIENT_SECRET=${AZURE_CLIENT_SECRET.length()} chars"
+      }
+    }
+    
     stage('Verificar Variables TF') {
       steps {
         sh '''
