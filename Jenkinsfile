@@ -2,14 +2,14 @@ pipeline {
   agent any
 
   environment {
-    AZURE_SUBSCRIPTION_ID = credentials('azure-subscription-id')
-    AZURE_CLIENT_ID       = credentials('azure-client-id')
-    AZURE_CLIENT_SECRET   = credentials('azure-client-secret')
-    AZURE_TENANT_ID       = credentials('azure-tenant-id')
-    ACR_NAME              = 'acrtfexample'
-    IMAGE_NAME            = 'myapp'
-    IMAGE_TAG             = 'latest'
-    RESOURCE_GROUP        = 'rg-containerapp'
+    TF_VAR_subscription_id = credentials('azuresubscription_id') // <-- este se usa en Terraform
+    AZURE_CLIENT_ID        = credentials('azureclient_id')
+    AZURE_CLIENT_SECRET    = credentials('azureclient_secret')
+    AZURE_TENANT_ID        = credentials('azuretenant_id')
+    ACR_NAME               = 'acrtfexample'
+    IMAGE_NAME             = 'myapp'
+    IMAGE_TAG              = 'latest'
+    RESOURCE_GROUP         = 'rg-containerapp'
   }
 
   stages {
