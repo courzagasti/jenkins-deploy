@@ -11,7 +11,7 @@ pipeline {
     // Para Azure CLI (az login)
     AZURE_CLIENT_ID        = credentials('azureclient_id')
     AZURE_CLIENT_SECRET    = credentials('azureclient_secret')
-    AZURE_TENANT_ID        = credentials('azuretenant_id')
+    AZURE_TENANT_ID        = '8ee9d595-4f94-41e5-a20c-b29b4e64578b'
     
     ACR_NAME               = 'acrtfexample'
     IMAGE_NAME             = 'myapp'
