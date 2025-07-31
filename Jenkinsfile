@@ -13,6 +13,16 @@ pipeline {
   }
 
   stages {
+    stage('Verificar Variables TF') {
+      steps {
+        sh '''
+        echo "TF_VAR_subscription_id=$TF_VAR_subscription_id"
+        echo "TF_VAR_client_id=$TF_VAR_client_id"
+        echo "TF_VAR_tenant_id=$TF_VAR_tenant_id"
+        '''
+      }
+    }
+    
     stage('Terraform Init & ACR Deployment') {
       steps {
         dir('terraform/infra') {
