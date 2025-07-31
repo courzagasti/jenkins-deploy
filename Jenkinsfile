@@ -3,9 +3,9 @@ pipeline {
 
   environment {
     TF_VAR_subscription_id = credentials('azuresubscription_id')
-    AZURE_CLIENT_ID        = credentials('azureclient_id')
-    AZURE_CLIENT_SECRET    = credentials('azureclient_secret')
-    AZURE_TENANT_ID        = credentials('azuretenant_id')
+    TF_VAR_client_id       = credentials('azureclient_id')
+    TF_VAR_client_secret   = credentials('azureclient_secret')
+    TF_VAR_tenant_id       = credentials('azuretenant_id')
     ACR_NAME               = 'acrtfexample'
     IMAGE_NAME             = 'myapp'
     IMAGE_TAG              = 'latest'
