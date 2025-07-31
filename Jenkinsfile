@@ -45,13 +45,16 @@ pipeline {
       }
     }
 
-    stage('Login to Azure & ACR') {
+    stage('Login to ACR with Docker') {
       steps {
-        sh '''
-        source /opt/azenv/bin/activate
-        az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
-        az acr login --name $ACR_NAME
-        '''
+        withCredentials([
+          usernamePassword(credentialsId: 'acr_admin_credentials', usernameVariable: 'ACR_USER', passwordVariable: 'ACR_PASS')
+        ]) {
+          sh '''
+          ACR_LOGIN_SERVER=acrtfexample.azurecr.io
+          docker login $ACR_LOGIN_SERVER -u $ACR_USER -p $ACR_PASS
+          '''
+        }
       }
     }
 
@@ -59,8 +62,7 @@ pipeline {
       steps {
         dir('docker') {
           sh '''
-          source /opt/azenv/bin/activate
-          ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --query loginServer -o tsv)
+          ACR_LOGIN_SERVER=acrtfexample.azurecr.io
           docker build -t $ACR_LOGIN_SERVER/$IMAGE_NAME:$IMAGE_TAG .
           docker push $ACR_LOGIN_SERVER/$IMAGE_NAME:$IMAGE_TAG
           '''
