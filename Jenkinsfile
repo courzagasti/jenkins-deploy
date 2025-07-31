@@ -6,7 +6,7 @@ pipeline {
     TF_VAR_subscription_id = credentials('azuresubscription_id')
     TF_VAR_client_id       = credentials('azureclient_id')
     TF_VAR_client_secret   = credentials('azureclient_secret')
-    TF_VAR_tenant_id       = credentials('azuretenant_id')
+    TF_VAR_tenant_id       = '8ee9d595-4f94-41e5-a20c-b29b4e64578b'
 
     // Para Azure CLI (az login)
     AZURE_CLIENT_ID        = credentials('azureclient_id')
