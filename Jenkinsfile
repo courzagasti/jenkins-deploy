@@ -57,6 +57,12 @@ pipeline {
         }
       }
     }
+    
+    stage('Verify Docker Access') {
+      steps {
+        sh 'docker ps'
+      }
+    }
 
     stage('Build and Push Docker Image') {
       steps {
